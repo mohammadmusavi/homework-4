@@ -1,0 +1,89 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #eee;
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#center {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.card {
+    display: inline-block;
+    position: relative;
+    width: 10rem;
+    height: 15rem;
+    background-color: #ffffff;
+    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+}
+
+.card.red {
+    color: red;
+}
+
+.card-topleft {
+    position: absolute;
+    top: 0.7rem;
+    left: 0.7rem;
+}
+
+.card-bottomright {
+    position: absolute;
+    bottom: 0.7rem;
+    right: 0.7rem;
+    transform: rotate(180deg);
+}
+
+.card-corner-rank,
+.card-corner-suit {
+    font-size: 1.2rem;
+    line-height: 1.25;
+    text-align: center;
+    transform: translate(-40%, 0);
+}
+
+.card-corner-suit {
+    font-size: 1.5rem;
+}
+
+.card-suits {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 17.5%;
+    height: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.card-suit {
+    font-size: 3rem;
+    position: absolute;
+}
+
+.card-suit.mirrored {
+    transform: rotate(180deg);
+}
