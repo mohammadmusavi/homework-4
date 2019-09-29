@@ -1,2 +1,2 @@
-Card Dealer
+Card Dealer:
 build(); shuffle(); deal();
