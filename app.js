@@ -2,14 +2,15 @@ var ranks = 'A 2 3 4 5 6 7 8 9 10 J Q K'.split(' ');
 var suits = '♠︎ ♥︎ ♣︎ ♦︎'.split(' ');
 var cards = [];
 var card;
-var container = document.getElementById('container');
-var output = document.getElementById('center');
+var output = document.getElementById('output');
 var html = [];
 var sum = 0;
 var card_1_index;
 var card_2_index;
 var number_1;
 var number_2;
+var rand_1;
+var rand_2;
 var suitpositions = [
     [
         [0, 0]
@@ -122,7 +123,6 @@ function playcard(a) {
                 if (j > 9) break;
             }
             html[sum] += '</div>'
-                //index top start----------
             html[sum] += '<div class="card-topleft">'
             html[sum] += '<div class="card-corner-rank">'
             html[sum] += ranks[j];
@@ -131,8 +131,6 @@ function playcard(a) {
             html[sum] += suits[i];
             html[sum] += '</div>'
             html[sum] += '</div>'
-                //index top end----------
-                //index bottom start----------
             html[sum] += '<div class="card-bottomright">'
             html[sum] += '<div class="card-corner-rank">'
             html[sum] += ranks[j];
@@ -141,7 +139,6 @@ function playcard(a) {
             html[sum] += suits[i];
             html[sum] += '</div>'
             html[sum] += '</div>'
-                //index bottom end----------
             html[sum] += '</div>';
             sum++;
         }
@@ -162,21 +159,30 @@ function shuffle(arr) {
     return temp_arr;
 }
 
-var rand_1 = Math.floor(Math.random() * 52);
-var rand_2 = Math.floor(Math.random() * 52);
+function showall() {
+    output.innerHTML = "";
+    for (var i = 0; i < 52; i++)
+        output.innerHTML += playcard(i);
+}
 
-creat_array_palycards(cards);
+function startgame() {
+    output.innerHTML = "";
+    rand_1 = Math.floor(Math.random() * 52);
+    rand_2 = Math.floor(Math.random() * 52);
 
-shuffle(cards);
+    creat_array_palycards(cards);
 
-card_1_index = cards[rand_1];
-card_2_index = cards[rand_2];
+    shuffle(cards);
 
-cards = [];
-creat_array_palycards(cards);
+    card_1_index = cards[rand_1];
+    card_2_index = cards[rand_2];
 
-number_1 = cards.indexOf(card_1_index);
-number_2 = cards.indexOf(card_2_index);
+    cards = [];
+    creat_array_palycards(cards);
 
-output.innerHTML += playcard(number_1);
-output.innerHTML += playcard(number_2);
+    number_1 = cards.indexOf(card_1_index);
+    number_2 = cards.indexOf(card_2_index);
+
+    output.innerHTML += playcard(number_1);
+    output.innerHTML += playcard(number_2);
+}
